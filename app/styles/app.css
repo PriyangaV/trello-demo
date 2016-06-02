@@ -1,0 +1,226 @@
+@font-face {
+    font-family: openSansFont;
+    src: url("OpenSans-Regular.ttf");
+}
+body{
+    margin: 0;
+    font-family: openSansFont;
+}
+.board{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.lists{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: #2FAFBD;
+    color: #fff;
+}
+.lists-header {
+    margin: 20px 20px;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+.list-container {
+    height: 100%;
+    background-color: #2DABBA;
+    margin-top: 10px;
+}
+.add-list {
+    padding: 5px;
+    text-align: center;
+    background-color: #0096A7;
+    box-shadow: -1px 1px 2px #095861;
+    cursor: pointer;
+}
+.list {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.list:hover {
+    background-color: #037280;
+}
+.cards-container{
+    position: fixed;
+    left: 250px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 1050px;
+    color: #000;
+    padding: 20px;
+    overflow: auto;
+    display: none;
+    cursor: default;
+}
+.card {
+    height: 210px;
+    width: 360px;
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #eee;
+    border-top: 3px solid #eee;
+    padding: 10px;
+    cursor: pointer;
+    float: left;
+    background: #FFF;
+    box-shadow: 2px 2px 13px #eee;
+}
+.card-name{
+    font-weight: bold;
+}
+.list.active {
+    background-color: #037280;
+}
+.list.active .cards-container{
+    display: block;
+}
+.card-heading {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 2px;
+}
+.card-description {
+    font-size: 14px;
+    color: #868686;
+    overflow-wrap: break-word;
+}
+.close{
+    float: right;
+    cursor: pointer;
+}
+.card.active{
+    outline: none;
+    border-top-color: #FF9862;
+}
+.button {
+    padding: 3px 12px;
+    background-color: #2EACBB;
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.comments{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #eee;
+}
+.comments-container{
+    width: 270px;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+.desc-message{
+    max-width: 190px;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-size: 13px;
+}
+.comments-title {
+    margin-left: -20px;
+    margin-top: 0;
+    display: inline-block;
+}
+.add-comment-button {
+    float: right;
+    border: 0;
+    background: none;
+    color: blue;
+    cursor: pointer;
+    font-size: 13px;
+}
+.add-comment-button:hover{
+    text-decoration: underline;
+}
+.container-comments{
+    position: absolute;
+    bottom: 0;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    -o-perspective: 1000;
+    margin-left: -125px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.comment-card{
+    width: 110px;
+    height: 30px;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    float: left;
+}
+.container-comments.hide .comment-card {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.front {
+    background: #2eacbb;
+    z-index: 10;
+}
+.container-comments:hover .front {
+    z-index: 0;
+}
+.back {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    background: #2eacbb;
+}
+.face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    line-height: 31px;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.arrow {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 17px solid transparent;
+    margin-top: -1px;
+    margin-left: 0px;
+}
+.container-comments .arrow {
+    border-right: 13px solid #2eacbb;
+    border-left: 0 solid;
+    float: left;
+}
+.container-comments.hide .arrow {
+    border-left: 13px solid #2eacbb;
+    border-right: 0 solid;
+    float: right;
+}
+.time {
+    position: relative;
+    font-size: 11px;
+    display: block;
+    color: red;
+}
+.each-comment {
+    margin-bottom: 10px;
+}

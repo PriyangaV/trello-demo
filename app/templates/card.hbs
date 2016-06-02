@@ -1,0 +1,35 @@
+<div class="cards-container">
+    <span class="button" {{action "addCard" list.cards}}>New Card</span>
+    <div class="card-container">
+        {{#each list.cards as |card|}}
+            <div class="card {{if card.isActive 'active'}}" tabindex="1" {{action 'stateChange' list.cards card}}>
+                <div class="card-heading">
+                    {{#if card.isRename}}
+                        {{input type="text"
+                                value=card.name
+                                class="rename-input"
+                                focusOut=(action 'saveName' card)
+                                insert-newline=(action 'saveName' card)
+                                escape-press=(action 'revertName' card)
+                                autofocus=true}}
+                    {{else}}
+                        <span class="card-name" {{action "enableRename" card on='doubleClick'}}> {{card.name}} </span>
+                    {{/if}}
+                    <span class="close" {{action "deleteCard" list.cards card}}> x </span>
+                </div>
+                <div class="card-description">
+                    {{#if card.isEditDesc}}
+                        {{textarea type="text"
+                                    autofocus=true
+                                    value=card.description
+                                    focusOut=(action 'saveDesc' card)
+                                    insert-newline=(action 'saveDesc' card)
+                                    escape-press=(action 'revertDesc' card)}}
+                    {{else}}
+                        <span class="card-desc" {{action "editDesc" card on='doubleClick'}}> {{card.description}} </span>
+                    {{/if}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

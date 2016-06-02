@@ -1,0 +1,47 @@
+<div class="lists">
+    <div class="lists-header"> Task Lists </div>
+    <div class="add-list" {{action "addList" model}}> Add New </div>
+    <div class="list-container">
+        {{#each model as |list index|}}
+            <div class="list {{unless index 'active'}}">
+                {{#if list.isRename}}
+                    {{input type="text"
+                            value=list.name
+                            class="rename-input"
+                            focusOut=(action 'saveListName' list)
+                            insert-newline=(action 'saveListName' list)
+                            escape-press=(action 'revertListName' list)
+                            autofocus=true}}
+                {{else}}
+                    <span {{action 'enableListRename' list on="doubleClick"}}> {{list.name}} </span>
+                {{/if}}
+                <span class="close" {{action 'deleteList' model list}}>x</span>
+                {{partial 'card' list}}
+            </div>
+        {{/each}}
+    </div>
+</div>
+{{#if isShowComments}}
+    <div class="comments">
+        <div class="container-comments hide" {{action 'showHideComments'}}>
+            <div class="arrow"></div>
+            <div class="comment-card">
+                <div class="face front">Show Comments</div>
+                <div class="face back">Hide Comments</div>
+            </div>
+        </div>
+        <div class="comments-container">
+            <div>
+                <h4 class="comments-title">Comments</h4>
+                <button class="add-comment-button" {{action 'addComment' activeCard.comments}}> Add Comment</button>
+            </div>
+            {{#each activeCard.comments as |comment|}}
+                <div class="each-comment">
+                    <span class="desc-message">{{comment.message}}</span>
+                    <span class="close" {{action 'deleteComment' activeCard.comments comment}}>x</span>
+                    <span class="time">{{comment.time}}</span>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+{{/if}}
